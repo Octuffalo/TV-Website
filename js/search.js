@@ -1,22 +1,21 @@
 const searchNews = (event) => {
   event.preventDefault();
   const keyword = document.querySelector("#keywords").value;
-  const url =
-    "https://content.guardianapis.com/search?q=" + keyword + "&api-key=";
-  const apiKey = "a59a883f-36dc-449a-85bc-2d45a95ed3ca";
+  const url = "https://api.tvmaze.com/search/shows?q=" + keyword;
   const resultList = document.querySelector("#results");
   resultList.innerHTML = "";
-  fetch(url + apiKey)
+  fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      data.response.results.forEach(function (value) {
+      data.forEach(function (value) {
         console.log(value);
         const articleElement = `<div class="col-md-4">
                                         <div class="card mb-4">
                                             <div class="card-body">
-                                                <h5 class="card-title">${value.webTitle}</h5>
-                                                <p class="card-text">${value.sectionName}</p>
-                                                <a target="_blank" href="${value.webUrl}" class="btn btn-primary">View Article</a>
+                                                <h5 class="card-title">${value.show.name}</h5>
+                                                <img class="responsive" src="${value.show.image.medium}">
+                                                <br>
+                                                <a target="_blank" href="${value.show.url}" class="btn btn-primary">View Article</a>
                                             </div>
                                         </div>
                                     <div>`;
