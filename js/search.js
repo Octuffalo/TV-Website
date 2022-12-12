@@ -15,7 +15,8 @@ const searchNews = (event) => {
                                                 <h5 class="card-title">${value.show.name}</h5>
                                                 <img class="responsive" src="${value.show.image.medium}">
                                                 <br>
-                                                <a target="_blank" href="${value.show.url}" class="btn btn-primary">View Article</a>
+                                                <p1>${value.show.summary}</p1>
+                                                <a target="_blank" href="${value.show.url} + /episodes" class="btn btn-primary">View Episodes</a>
                                             </div>
                                         </div>
                                     <div>`;
